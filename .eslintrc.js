@@ -12,6 +12,16 @@ module.exports = {
     parser: "@babel/eslint-parser",
   },
   rules: {
+    "no-multi-spaces": ["error"],
+    "vue/no-multiple-template-root": "off",
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
   },

@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <section class="container">
+    <range-selector v-model.number="max" :filteredProducts="filteredProducts" />
+    <product-list :filteredProducts="filteredProducts" />
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import ProductList from "@/components/ProductList.vue";
+import RangeSelector from "@/components/RangeSelector.vue";
 
 export default {
   name: "HomeView",
+  data: function () {
+    return {
+      max: 50,
+      cart: [],
+      displayCart: false,
+    };
+  },
+  props: ["products"],
   components: {
-    HelloWorld,
+    ProductList,
+    RangeSelector,
+  },
+  computed: {
+    filteredProducts() {
+      return this.products.filter((item) => item.price < this.max);
+    },
   },
 };
 </script>
